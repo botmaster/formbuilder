@@ -1,0 +1,105 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --base-hue: 170;
+  --body-bg-color: hsl(var(--base-hue) 10% 95%);
+  --body-text-color: hsl(var(--base-hue) 20% 30%);
+  --input-border-color: hsl(var(--base-hue) 5% 80%);
+  --input-focus-outline-color: hsl(var(--base-hue) 90% 30%);
+  --form-bg-color: hsl(var(--base-hue) 10% 99%);
+  --form-shadow-color: hsl(var(--base-hue) 10% 20% / 25%);
+}
+
+body {
+  background-color: var(--body-bg-color);
+  color: var(--body-text-color);
+  font: 1em/1.6 sans-serif;
+  margin: 0;
+}
+
+#app {
+  padding: 1.5em;
+}
+
+form {
+  background-color: var(--form-bg-color);
+  padding: 1.25em;
+  box-shadow: 0 0 1em 0 var(--form-shadow-color);
+  border-radius: 1em;
+}
+
+input,
+select,
+button,
+textarea {
+  font: inherit;
+  color: inherit;
+  padding: 0.3em 0.6em;
+  min-height: calc(
+    (0.3 * 2 + 1.6) * 1em + 2px
+  ); /* Vertical padding * 2 + Base line-height + Vertical border * 2 */
+  width: 100%;
+  border: 1px solid var(--input-border-color);
+  border-radius: 0.5em;
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+  outline-color: var(--input-focus-outline-color);
+}
+
+button {
+  background-color: var(--body-text-color);
+  border-color: var(--body-text-color);
+  color: var(--form-bg-color);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--input-focus-outline-color);
+  border-color: var(--input-focus-outline-color);
+}
+
+label {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.25em;
+  cursor: pointer;
+}
+
+.input-row + .input-row {
+  padding-top: 0.75em;
+  margin-top: 0.75em;
+  border-top: 1px solid #eee;
+}
+
+#app {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-container {
+  display: grid;
+  gap: 1em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .form-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 540px) {
+  .form-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
